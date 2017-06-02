@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8" />
+		<title></title>
+		<style>
+			body{
+				/*
+				 相当于计数器的初始化
+				 * */
+				counter-reset: h2Counter 0;
+			}
+			h2{
+				/*
+				 相当于计数器的改变值
+				 * */
+				counter-increment: h2Counter 1;
+			}
+			h2::before{
+				/*
+				相当于计数器的使用
+				 * */
+				content: counter(h2Counter,lower-alpha)". ";
+			}
+		</style>
+	</head>
+	<body>
+		<h2>注册会员</h2>
+		<p>注册会员的事项</p>
+		<h2>登陆系统</h2>
+		<p>登陆系统的事项</p>
+		<h2>享受会员待遇</h2>
+		<p>享受会员待遇的一些事项</p>
+	</body>
+</html>
