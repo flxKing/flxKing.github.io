@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8" />
+		<title>猜数字游戏</title>
+
+	</head>
+	<body>
+		<div class="t">
+		<h3>猜数字游戏</h3>
+		<input type="number" min="0" name="num" id="num"  placeholder="请输入0-10的整数" />
+		<input type="button" name="btn" id="btn" value="提交" />
+		<input type="button" name="btn1" id="btn1" value="重来" />
+		</div>
+		<div class="d">			
+			剩余次数：<span id="cishu">6</span><br />				
+		<div class="d3">
+			历史记录：<br />
+			<p id="hst"></p>
+			</div>
+        <script type="text/javascript">
+        	var onum=document.getElementById('num'),
+        	    obtn=document.getElementById('btn'),
+        	    obtn1=document.getElementById('btn1'),
+        	    ocishu=document.getElementById('cishu'),
+        	    ohst=document.getElementById('hst'),
+        	    max=10,
+			    cs=6;
+			    var sr;
+			    var sj=parseInt(Math.random()*max+1);
+                obtn.addEventListener("click",start);
+                function start(){
+                	sr=parseInt(onum.value);
+                	ocishu.innerHTML=cs-1;
+                	if(isNaN(sr))
+						ohst.innerHTML+="输入的"+sr+"不是数字！<br />";
+					else if(cs>0){
+						if(sr>sj)
+							ohst.innerHTML+="输入的"+sr+"偏大！<br />";
+						else if(sr<sj)
+							ohst.innerHTML+="输入的"+sr+"偏小！<br />";
+						else{
+							ohst.innerHTML+="输入的"+sr+"正确！<br />";
+							bianhua();
+						}
+
+                }
+						if(cs<=1){
+					bianhua();					
+					onum.focus();
+					}	
+					cs--;
+			}
+			function bianhua(){
+				onum.disabled=true;
+				onum.style.borderColor="red";
+				obtn.style.display="none";
+				obtn1.style.display="block";
+			}
+			obtn1.addEventListener("click",chonglai);
+			function  chonglai () {
+				onum.disabled=false;
+//				obtn.style.display="block";
+//				obtn1.style.display="none";				
+				cs=6;	
+				onum.style.borderColor="black";
+				sr=parseInt(Math.random()*max);
+				onum.value="";
+				ocishu.innerHTML=cs;
+				ohst.innerHTML="";
+				onum.focus();
+			}
+        </script>
+	</body>
+</html>
