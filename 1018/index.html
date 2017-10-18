@@ -1,0 +1,44 @@
+
+
+
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8" />
+		<title></title>
+				<style type="text/css">
+			body {
+				text-align: center;
+			}
+			
+			h1 {
+				color: black;
+			}
+		</style>
+	</head>
+	<body>
+			<h1 id="h1"></h1>
+		<div id="btn">
+			<input type="button" id="" value=" 1" />
+			<input type="button" id="" value=" 2" />
+			<input type="button" id="" value=" 3" />
+	
+		</div>
+		<script type="text/javascript">
+			var OBtnList=document.querySelectorAll("#btn input");
+			var Oh1=document.getElementById("h1");
+			var i;
+			for(i=0;i<OBtnList.length;i++){
+				OBtnList[i].addEventListener("click",(function(index){
+					return function(){
+						Oh1.innerHTML="你点了 "+index+"号按钮"
+					 };
+				   }(i+1)
+				 )	
+				);
+			}
+
+		</script>
+
+	</body>
+</html>
