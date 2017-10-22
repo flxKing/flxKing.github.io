@@ -1,0 +1,83 @@
+
+
+<!DOCTYPE html>
+<html>
+
+	<head>
+		<meta charset="utf-8" />
+		<title>tab</title>
+	</head>
+	<style type="text/css">
+		body {
+			
+			text-align: center;
+			
+		}
+		
+		#content {
+			height: 1200px;
+			width: 1200px;
+		}
+		
+		#content {
+			height: 1200px;
+			width: 1200px;
+			margin: 0 auto;
+			overflow: hidden;
+		}
+		
+		#content div {
+			
+			height: 1200px;
+			width: 1200px;
+			display: none;
+			background-color: red;
+		}
+		
+	  input[i=1]
+	</style>
+
+	<body>
+		
+		<div id="k">
+			<input type="button" name="1" id="1" value="1" />
+			<input type="button" id="2" value="2" />
+			<input type="button" name="3" id="3" value="3" />
+			
+		</div>
+		<div id="content">
+			<div id="1" style="background-color: yellow;">1</div>
+			<div id="2" style="background-color: palegreen;">2</div>
+			<div id="3" style="background-color: saddlebrown;">3</div>
+			
+		</div>
+		<script type="text/javascript">
+			var obtns = document.querySelectorAll('#k input');
+			var ocont = document.querySelectorAll('#content div')
+			
+			
+			for(var i = 0; i < obtns.length; i++) {
+
+				obtns[i].addEventListener('click', (function(n) {
+
+					return function() {
+						for (var j=0;j<obtns.length;j++) {
+							if(j==n){
+							ocont[j].style.display = "block";
+						}else if(j<n){
+							ocont[j].style.display="none";
+						}else if(j>n){
+							ocont[j].style.display="none";
+						}
+						}
+						ocont[n].style.display = "block";
+           
+						console.log("你单击了第" + (n+1) + "个按钮")
+					};
+				})(i));
+
+			}
+		</script>
+	</body>
+
+</html>
