@@ -1,0 +1,64 @@
+
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8" />
+		<title>放大镜</title>
+		<style type="text/css">
+			body{
+				min-height: 1000px;
+			}
+			.zoom{
+				width: 400px;
+				height: 400px;
+			    position: relative;
+				overflow: hidden;
+				
+			}
+			.zoom img{
+				width: 100%;
+			}
+			
+			.zoom .zoomer{
+				width: 100px;
+				height: 100px;
+				background-color: #00f;
+				position: absolute;
+				left: 0;
+				top: 0;
+				transform: translate(-50%,-50%);
+				pointer-events: none;
+				display: none;
+				background-repeat: no-repeat;
+			}
+			.zoom:hover .zoomer{
+				display: block;
+			}
+		</style>
+	</head>
+	<body>
+		<figure class="zoom">
+			<img src="img/IMG_1072.JPG"/>
+			<div class="zoomer"></div>
+		</figure>
+		<script type="text/javascript">
+			var zoom = document.querySelector('.zoom'),
+				zoomer = zoom.querySelector('.zoomer'),
+				img=zoom.querySelector('img'),
+                ratio;
+			
+			img.addEventListener("load",function(event){
+				ratio = img.naturalWidth/img.width;
+				zoomer.style.backgroundImage = 'url(' + img.src + ')';
+			})
+			
+			zoom.addEventListener("mousemove",function(event){
+				var x=event.offsetX||event.layerX;
+				var y=event.offsetY||event.layerY;
+				zoomer.style.left=x+"px";
+				zoomer.style.top=y+"px";
+				zoomer.style.backgroundPosition=(-ratio*x+80)+"px "+(-ratio*y+0)+"px";
+			});
+		</script>
+	</body>
+</html>
