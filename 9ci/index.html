@@ -1,0 +1,126 @@
+
+
+<!DOCTYPE html>
+<html>
+
+	<head>
+		<meta charset="utf-8" />
+		<title></title>
+		<link href="//netdna.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet">
+		<style type="text/css">
+			body {
+				margin: 0;
+				color: white;
+			}
+			
+			ul li {
+				list-style: none;
+				font-size: 20px;
+			}
+			
+			.to {
+				height: 70px;
+				position: fixed;
+				top: 0;
+				right: 0;
+				left: 0;
+				font-size: 28px;
+				background: black;
+				box-shadow: 0 2px 5px rgba(0, 0, 0, .26);
+			}
+			
+			.to i {
+				padding: 25px;
+			}
+			
+			.liebiao {
+				position: fixed;
+				width: 230px;
+				top: 70px;
+				left: 0;
+				bottom: 0;
+				background: darkolivegreen;
+			}
+			
+			.liebiao ul {
+				padding-left: 20px;
+			}
+			
+			.btn,.jiantou {
+				transition: transform .5s;
+			}
+		</style>
+	</head>
+
+	<body>
+		<div class="to">
+			<i class="fa fa-reorder btn"></i>菜单
+		</div>
+		<div class="liebiao" style="display: none;">
+			<ul>
+				<li class="Item">one <i class="fa fa-angle-right jiantou"></i>
+					<ul class="submenu" style="display: none;">
+						<li>1</li>
+						<li>2</li>
+						<li>3</li>
+						<li>4</li>
+					</ul>
+				</li>
+				<li class="Item">two <i class="fa fa-angle-right jiantou"></i>
+					<ul class="submenu" style="display: none;">
+						<li>1</li>
+						<li>2</li>
+						<li>3</li>
+						<li>4</li>
+					</ul>
+				</li>
+				<li class="Item">three <i class="fa fa-angle-right jiantou"></i>
+					<ul class="submenu" style="display: none;">
+						<li>1</li>
+						<li>2</li>
+						<li>3</li>
+						<li>4</li>
+					</ul>
+				</li>
+				<li class="Item">four <i class="fa fa-angle-right jiantou"></i>
+					<ul class="submenu" style="display: none;">
+						<li>1</li>
+						<li>2</li>
+						<li>3</li>
+						<li>4</li>
+					</ul>
+				</li>
+		</div>
+		<script type="text/javascript">
+			var i = 0;
+			var btn = document.getElementsByClassName("btn");
+			var liebiao = document.getElementsByClassName("liebiao");
+			btn[0].addEventListener("click", function() {
+				if(liebiao[0].style.display == "none") {
+					liebiao[0].style.display = "block";
+					btn[0].style.transform = "rotate(90deg)";
+				} else {
+					liebiao[0].style.display = "none";
+					btn[0].style.transform = "rotate(0deg)";
+				}
+			})
+			var Item = document.getElementsByClassName("Item");
+			var submenu = document.getElementsByClassName("submenu");
+			var jiantou = document.getElementsByClassName("jiantou");
+			for(i = 0; i < 4; i++) {
+				Item[i].addEventListener("click", function(n) {
+					return function() {
+						if(submenu[n].style.display == "none") {
+							submenu[n].style.display = "block";
+							jiantou[n].style.transform = "rotate(90deg)";
+						} else {
+							jiantou[n].style.transform = "rotate(0deg)";
+							submenu[n].style.display = "none";
+						}
+					}
+				}(i));
+			}
+		</script>
+	</body>
+
+</html>
