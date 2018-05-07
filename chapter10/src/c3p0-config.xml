@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<c3p0-config>
+    <named-config name="zptc">
+        <property name="driverClass">com.mysql.jdbc.Driver</property>
+        <property name="jdbcUrl">jdbc:mysql://localhost:3306/jdbc</property>
+        <property name="user">root</property>
+        <property name="password">root</property>
+        <property name="initialPoolSize">5</property>
+        <property name="maxPoolSize">15</property>
+    </named-config>
+</c3p0-config>
